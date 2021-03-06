@@ -1,0 +1,75 @@
+import java.util.*;
+
+public class Solution{
+
+     public static void main(String []args){
+       Scanner scanner = new Scanner(System.in);
+       int xMax = Integer.parseInt(scanner.next()); //Maximum x coordinate of rectangular ring
+       int yMax = Integer.parseInt(scanner.next()); //Maximum y coordinate of rectangular ring
+        scanner.nextLine();//To move the pointer of the scanner to the next Line
+       while(scanner.hasNext()){
+           int xRobot = Integer.parseInt(scanner.next()); //Current x coordinate of robot
+           int yRobot = Integer.parseInt(scanner.next()); //Current y coordinate of robot
+           String cardinal = scanner.next();
+           scanner.nextLine();//To move the pointer of the scanner to the next Line
+           String robotDirections = scanner.nextLine();//The directions of the robot to be done 
+
+           for (int i = 0; i < robotDirections.length(); i++){
+                char c = robotDirections.charAt(i);
+                if(xRobot <= xMax && xRobot >= 0 && yRobot <= yMax && yRobot >= 0){
+                if(c == 'L'){
+                    switch(cardinal){
+                        case "N":
+                            cardinal = "W";
+                        break;
+                        case "E":
+                            cardinal = "N";
+                        break;
+                        case "W":
+                            cardinal = "S";
+                        break;
+                        case "S":
+                            cardinal = "E";
+                        break;
+                    }
+                }
+                else if(c == 'R'){
+                    switch(cardinal){
+                        case "N":
+                            cardinal = "E";
+                        break;
+                        case "E":
+                            cardinal = "S";
+                        break;
+                        case "W":
+                            cardinal = "N";
+                        break;
+                        case "S":
+                            cardinal = "W";
+                        break;
+                    }
+                    
+                }
+                else if(c == 'M'){
+                    switch(cardinal){
+                        case "N":
+                            yRobot++;
+                        break;
+                        case "E":
+                            xRobot++;
+                        break;
+                        case "W":
+                            xRobot--;
+                        break;
+                        case "S":
+                            yRobot--;
+                        break;
+                    }
+                }
+                }
+               
+            }
+            System.out.println(xRobot + " " + yRobot + " " + cardinal); 
+        }
+     }
+}
